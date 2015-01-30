@@ -27,28 +27,28 @@ object TwitterStreamingMain {
     System.setProperty("twitter4j.oauth.accessToken", accessToken)
     System.setProperty("twitter4j.oauth.accessTokenSecret", accessTokenSecret)
 
-    val sparkConf = new SparkConf().setAppName("TwitterPopularTags").setMaster("local[2]")
+    val sparkConf = new SparkConf().setAppName("TwitterPopularTags").setMaster("local[4]")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     val stream = TwitterUtils.createStream(ssc, None)
 
 
     val hashTags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
 
-//    val topCounts60 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(60))
-//      .map { case (topic, count) => (count, topic)}
-//      .transform(_.sortByKey(false))
-
-    val topCounts10 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(10))
+    val topCounts60 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(60))
       .map { case (topic, count) => (count, topic)}
       .transform(_.sortByKey(false))
 
-
     // Print popular hashtags
-//    topCounts60.foreachRDD(rdd => {
-//      val topList = rdd.take(10)
-//      println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
-//      topList.foreach { case (count, tag) => println("%s (%s tweets)".format(tag, count))}
-//    })
+    topCounts60.foreachRDD(rdd => {
+      val topList = rdd.take(10)
+      println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
+      topList.foreach { case (count, tag) => println("%s (%s tweets)".format(tag, count))}
+    })
+
+    //for every 10 seconds
+    val topCounts10 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(10))
+      .map { case (topic, count) => (count, topic)}
+      .transform(_.sortByKey(false))
 
     topCounts10.foreachRDD(rdd => {
       val topList = rdd.take(10)
