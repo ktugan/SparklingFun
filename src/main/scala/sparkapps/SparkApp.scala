@@ -10,7 +10,7 @@ object SparkApp {
 
   def sparkJob() = {
 
-    val file = "../../data/pagecounts" // Specify the path to your data file
+    val file = "C:\\workspace\\algobigdata\\Spark-Package\\data\\pagecounts" // Specify the path to your data file
     val conf = new SparkConf()
           .setAppName("Spark BluePrint")
                  //Add more config if needed
@@ -20,17 +20,16 @@ object SparkApp {
 
       val data = sc.textFile(file, 2).cache()
 
-//      val numAs =
-//        data.filter(line => line.contains("a")).count()
-//
-//      val numBs =
-//        data.filter(line => line.contains("b")).count()
-//
-//      val piped = data.pipe("grep a").collect();
-//
-//      println("Lines with a: %s, Lines with b: %s".format(numAs, numBs))
-    data.take(5).foreach(println)
-  }
+      val numAs =
+        data.filter(line => line.contains("a")).count()
+
+      val numBs =
+        data.filter(line => line.contains("b")).count()
+
+      val piped = data.pipe("grep a").collect();
+
+      println("Lines with a: %s, Lines with b: %s".format(numAs, numBs))
+    }
 
  
   def main(args: Array[String])= sparkJob() 
