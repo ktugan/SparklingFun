@@ -7,7 +7,7 @@ import org.apache.spark.streaming.twitter.TwitterUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object TwitterStreaming {
-  def twittering(algorithm: BigDataAlgorithm) = {
+  def startTwitterStreamAlgorithm(algorithm: BigDataAlgorithm) = {
     Logger.getLogger("org").setLevel(Level.OFF)
     Logger.getLogger("akka").setLevel(Level.OFF)
 
@@ -34,11 +34,6 @@ object TwitterStreaming {
 
     ssc.start()
     ssc.awaitTermination()
-  }
-
-  def main(args: Array[String])= {
-    val algorithm = new SimpleCounter()
-    twittering(algorithm)
   }
 
 }
