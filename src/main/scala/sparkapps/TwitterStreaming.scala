@@ -6,7 +6,7 @@ import org.apache.spark.SparkConf
 import org.apache.spark.streaming.twitter.TwitterUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
-object TwitterStreamingMain {
+object TwitterStreaming {
   def twittering(algorithm: BigDataAlgorithm) = {
     Logger.getLogger("org").setLevel(Level.OFF)
     Logger.getLogger("akka").setLevel(Level.OFF)
