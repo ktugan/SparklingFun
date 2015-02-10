@@ -1,15 +1,20 @@
 package algorithms
 
+import org.apache.spark.rdd.RDD
 import twitter4j.Status
 
-class SimpleCounter extends BigDataAlgorithm
+object SimpleCounter extends BigDataAlgorithm
 {
   var i = 0
-  override def calculate(x: Status): Unit = {
+  override def calculate(rdd: RDD[Status]): Unit = {
+    rdd.foreach(count)
+  }
+
+  private def count(status : Status): Unit = {
     i += 1
-    if(i % 1000 == 1)
-    {
-      println("currently: " + i + " " + x.getUser().getScreenName())
-    }
+  }
+
+  override def print(): Unit = {
+    println("SimpleCounter: " + i)
   }
 }

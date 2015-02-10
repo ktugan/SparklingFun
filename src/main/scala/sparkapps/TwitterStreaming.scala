@@ -29,7 +29,7 @@ object TwitterStreaming {
     val stream = TwitterUtils.createStream(ssc, None)
 
     stream.foreachRDD(rdd => {
-      rdd.foreach(status => algorithm.calculate(status))
+      algorithm.calculate(rdd)
     })
 
     ssc.start()
