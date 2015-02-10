@@ -1,16 +1,12 @@
 package sparkapps
 
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkContext._
-import org.apache.spark.SparkConf
-import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
 
 
 object SparkApp {
 
-  def sparkJob() = {
-
-    val file = "C:\\workspace\\algobigdata\\Spark-Package\\data\\pagecounts" // Specify the path to your data file
+  def sparkJob(file: String) = {
+    
     val conf = new SparkConf()
           .setAppName("Spark BluePrint")
                  //Add more config if needed
@@ -30,8 +26,5 @@ object SparkApp {
 
       println("Lines with a: %s, Lines with b: %s".format(numAs, numBs))
     }
-
- 
-  def main(args: Array[String])= sparkJob() 
 
 }
