@@ -1,15 +1,22 @@
 package sparkapps
 
-import algorithms.{TopNCountMinSketch, RevisedMorrisCounter, MorrisCounter, SimpleCounter}
+import algorithms.{
+TopNCountMinSketch,
+RevisedMorrisCounter,
+MorrisCounter,
+SimpleCounter,
+NaiveCountDistinct}
 
 object Main {
 
   def main(args: Array[String])= {
     val algorithms = Array(
       SimpleCounter,
+      NaiveCountDistinct,
       MorrisCounter,
       RevisedMorrisCounter,
-      TopNCountMinSketch)
+      TopNCountMinSketch
+    )
 
     TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
   }

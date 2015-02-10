@@ -6,24 +6,24 @@ import twitter4j.Status
 
 import scala.util.Random
 
-object RevisedMorrisCounter extends BigDataAlgorithm
-{
+object RevisedMorrisCounter extends BigDataAlgorithm {
 
-  var counter = Array(0,0,0,0,0)
+  var counter = Array(0, 0, 0, 0, 0)
+
   override def calculate(x: RDD[Status]): Unit = {
     x.foreach(probably_increment)
   }
 
-  def probably_increment(x: Status): Unit ={
-    for(a <- 0 to counter.length -1){
+  def probably_increment(x: Status): Unit = {
+    for (a <- 0 to counter.length - 1) {
       //need edge case because generating random of 0 is an error
-      if(counter(a) == 0){
+      if (counter(a) == 0) {
         counter(a) += 1
       }
 
       //increment with probability 1 / 2^i
-      val r =  Random.nextInt(pow(2, counter(a)))
-      if(r == 0){
+      val r = Random.nextInt(pow(2, counter(a)))
+      if (r == 0) {
         counter(a) += 1
       }
     }
@@ -33,6 +33,6 @@ object RevisedMorrisCounter extends BigDataAlgorithm
     var avg = 0
     counter.foreach(i => avg += (pow(2, i) - 1) / counter.length)
 
-    println(f"RevMorrisCounter:\t $avg")
+    println("RevMorrisCounter:".padTo(20, ' ') + avg)
   }
 }

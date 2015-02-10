@@ -10,4 +10,4 @@ To use the Project open intellij and import as sbt project.
 To use the twitter stream, twitter api-keys are necessary
 which can be generated on <https://apps.twitter.com/>.
 need to be filled into the file ```src/main/scala/sparkapps/TwitterStreaming.scala```.
-You can find an example configuration in the folder.
+You can find an example configuration in the same folder.
