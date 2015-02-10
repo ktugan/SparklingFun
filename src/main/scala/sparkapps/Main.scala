@@ -1,12 +1,16 @@
 package sparkapps
 
-import algorithms.{RevisedMorrisCounter, MorrisCounter, SimpleCounter}
-import breeze.numerics._
+import algorithms.{TopNCountMinSketch, RevisedMorrisCounter, MorrisCounter, SimpleCounter}
 
 object Main {
 
   def main(args: Array[String])= {
-    val algorithms = Array(SimpleCounter, MorrisCounter, RevisedMorrisCounter)
+    val algorithms = Array(
+      SimpleCounter,
+      MorrisCounter,
+      RevisedMorrisCounter,
+      TopNCountMinSketch)
+
     TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
   }
 }
