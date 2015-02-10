@@ -7,7 +7,7 @@ import org.apache.spark.streaming.twitter.TwitterUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object TwitterStreaming {
-  def startTwitterStreamAlgorithm(algorithm: BigDataAlgorithm) = {
+  def startTwitterStreamAlgorithm(algorithms: Seq[BigDataAlgorithm]) = {
     Logger.getLogger("org").setLevel(Level.OFF)
     Logger.getLogger("akka").setLevel(Level.OFF)
 
@@ -29,7 +29,7 @@ object TwitterStreaming {
     val stream = TwitterUtils.createStream(ssc, None)
 
     stream.foreachRDD(rdd => {
-      algorithm.calculate(rdd)
+      algorithms.foreach(algorithm => algorithm.calculate(rdd))
     })
 
     ssc.start()

@@ -1,10 +1,11 @@
 package sparkapps
 
-import algorithms.SimpleCounter
+import algorithms.{MorrisCounter, SimpleCounter}
 
 object Main {
 
   def main(args: Array[String])= {
-    TwitterStreaming.startTwitterStreamAlgorithm(SimpleCounter)
+    val algorithms = Array(SimpleCounter, MorrisCounter)
+    TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
   }
 }
