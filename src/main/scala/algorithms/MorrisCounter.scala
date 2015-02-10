@@ -22,7 +22,7 @@ object MorrisCounter extends BigDataAlgorithm
     }
 
     //increment with probability 1 / 2^i
-    val r = Random.nextInt(i*i)
+    val r = Random.nextInt(pow(2, i))
     if(r == 0){
       i += 1
     }
@@ -30,6 +30,6 @@ object MorrisCounter extends BigDataAlgorithm
 
   override def print(): Unit = {
     val approx = pow(2, i) - 1
-    println("MorrisCounter: counted:" + i + " aprox:" + approx)
+    println(f"MorrisCounter:\t $approx ($i)")
   }
 }

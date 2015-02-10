@@ -15,6 +15,6 @@ object SimpleCounter extends BigDataAlgorithm
   }
 
   override def print(): Unit = {
-    println("SimpleCounter: " + i)
+    println(f"SimpleCounter:\t $i")
   }
 }
