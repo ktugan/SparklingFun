@@ -1,6 +1,6 @@
 package sparkapps
 
-import algorithms.{BigDataAlgorithm, SimpleCounter}
+import algorithms.BigDataAlgorithm
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.twitter.TwitterUtils
@@ -11,10 +11,10 @@ object TwitterStreaming {
     Logger.getLogger("org").setLevel(Level.OFF)
     Logger.getLogger("akka").setLevel(Level.OFF)
 
-    val consumerKey = "***REMOVED***"
-    val consumerSecret = "***REMOVED***"
-    val accessToken = "***REMOVED***"
-    val accessTokenSecret = "***REMOVED***"
+    val consumerKey = TwitterCredentials.consumerKey
+    val consumerSecret = TwitterCredentials.consumerSecret
+    val accessToken = TwitterCredentials.accessToken
+    val accessTokenSecret = TwitterCredentials.accessTokenSecret
 
 
     // Set the system properties so that Twitter4j library used by twitter stream
