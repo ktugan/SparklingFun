@@ -7,16 +7,7 @@ The template for this project is based upon ludwsam's repo: (https://github.com/
 
 ## How-To use
 To use the Project open intellij and import as sbt project.
-To use the twitter stream, twitter api-keys are necessary which can be generated on https://apps.twitter.com/ and need to be filled into a scala object similar to:
-
-
-```scala
-package sparkapps
-
- object TwitterCredentials {
-   val consumerKey = "***"
-   val consumerSecret = "***"
-   val accessToken = "***"
-   val accessTokenSecret = "***"
- }
-```
+To use the twitter stream, twitter api-keys are necessary
+which can be generated on <https://apps.twitter.com/>.
+need to be filled into the file ```src/main/scala/sparkapps/TwitterStreaming.scala```.
+You can find an example configuration in the folder.
