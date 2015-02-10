@@ -24,6 +24,6 @@ libraryDependencies += "org.twitter4j" % "twitter4j-core" % "3.0.3"
 
 libraryDependencies += "commons-cli" % "commons-cli" % "1.2"
 
-libraryDependencies += "com.twitter" % "algebird-core" % "0.2.0"
+libraryDependencies += "com.twitter" % "algebird-core_2.10" % "0.9.0"
 
 resolvers += "Akka Repository" at "http://repo.akka.io/releases/"
