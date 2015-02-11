@@ -1,20 +1,20 @@
 package algorithms
 
 import org.apache.spark.rdd.RDD
-import twitter4j.Status
+import twitter4j.{HashtagEntity, Status}
 
 import scala.collection.mutable
 
 
 object NaiveCountDistinct extends BigDataAlgorithm {
-  var set = new mutable.HashSet[Long]()
+  var set = new mutable.HashSet[String]()
 
   override def calculate(rdd: RDD[Status]): Unit = {
-    rdd.foreach(count)
+    rdd.flatMap(status => status.getHashtagEntities).foreach(count)
   }
 
-  private def count(status: Status): Unit = {
-    set.add(status.getUser.getId)
+  private def count(hashTag: HashtagEntity): Unit = {
+    set.add(hashTag.getText)
   }
 
   override def print(): Unit = {

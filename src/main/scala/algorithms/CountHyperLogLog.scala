@@ -3,20 +3,22 @@ package algorithms
 import breeze.linalg.max
 import breeze.numerics.pow
 import org.apache.spark.rdd.RDD
-import twitter4j.Status
+import twitter4j.{HashtagEntity, Status}
 
+import scala.util.Random
 import scala.util.hashing.MurmurHash3
 
 object CountHyperLogLog extends BigDataAlgorithm {
 
   var no_of_zeros = 0
+  val seed = 42//Random.nextInt()
 
   override def calculate(rdd: RDD[Status]): Unit = {
-    rdd.foreach(count)
+    rdd.flatMap(status => status.getHashtagEntities).foreach(count)
   }
 
-  private def count(status: Status): Unit = {
-    var hash = MurmurHash3.stringHash(status.getUser.getId.toString, 42)
+  private def count(hashTag: HashtagEntity): Unit = {
+    var hash = MurmurHash3.stringHash(hashTag.getText, seed)
     var i = 0
     while ((hash & 1) == 0) {
       hash = hash >> 1
@@ -26,6 +28,6 @@ object CountHyperLogLog extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
-    println("CountHyperLogLog:".padTo(20, ' ') + pow(2, no_of_zeros))
+    println("DistinctHashtags (Hyperloglog):".padTo(20, ' ') + pow(2, no_of_zeros))
   }
 }
