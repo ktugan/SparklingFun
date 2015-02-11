@@ -5,7 +5,9 @@ TopNCountMinSketch,
 RevisedMorrisCounter,
 MorrisCounter,
 SimpleCounter,
-NaiveCountDistinct}
+NaiveCountDistinct,
+CountHyperLogLog
+}
 
 object Main {
 
@@ -15,7 +17,8 @@ object Main {
       NaiveCountDistinct,
       MorrisCounter,
       RevisedMorrisCounter,
-      TopNCountMinSketch
+      TopNCountMinSketch,
+      CountHyperLogLog
     )
 
     TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
