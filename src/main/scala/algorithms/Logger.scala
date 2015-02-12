@@ -16,7 +16,7 @@ object Logger {
 
   var algorithms : List[BigDataAlgorithm] = List()
   def register(algorithm : BigDataAlgorithm): Unit ={
-    algorithms = algorithm :: algorithms
+    algorithms =  algorithms ::: List(algorithm)
   }
 
 
