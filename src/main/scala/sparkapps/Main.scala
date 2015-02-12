@@ -16,6 +16,7 @@ object Main {
       CountHyperLogLog,
       RevisedCountHyperLogLog,
       AlgeHyperLogLog,
+      BloomCounter,
 
     //max n counting
       TopNCountMinSketch
