@@ -36,6 +36,6 @@ class RevisedCountHyperLogLog extends BigDataAlgorithm {
     val data = no_of_zeros.map(i => pow(2, i) - 1)
     val harmon_avg = MathHelper.harmonicMean(data)
     val arith_avg = MathHelper.arithmeticMean(data)
-    harmon_avg.toInt.toString + ";" + arith_avg.toInt.toString
+    harmon_avg.toInt.toString + "," + arith_avg.toInt.toString
   }
 }
