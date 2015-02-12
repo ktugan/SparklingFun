@@ -9,7 +9,8 @@ import scala.util.Random
 
 object RevisedMorrisCounter extends BigDataAlgorithm {
 
-  var counter = Array(0, 0, 0, 0, 0)
+  val n = 5
+  var counter = Array.fill(n)(0)
 
   override def calculate(x: RDD[Status]): Unit = {
     x.foreach(probably_increment)

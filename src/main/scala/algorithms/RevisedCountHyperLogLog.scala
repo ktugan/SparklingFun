@@ -10,8 +10,9 @@ import scala.util.hashing.MurmurHash3
 
 object RevisedCountHyperLogLog extends BigDataAlgorithm {
 
-  var no_of_zeros = Array(0, 0, 0, 0, 0)
-  val seeds = Array(1, 2, 3, 4, 5)
+  val n = 5
+  var no_of_zeros = Array.fill(n)(0)
+  val seeds = Array.fill(n)(scala.util.Random.nextInt())
 
 
   override def calculate(rdd: RDD[Status]): Unit = {
