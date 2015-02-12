@@ -4,6 +4,7 @@ import breeze.linalg.max
 import breeze.numerics.pow
 import org.apache.spark.rdd.RDD
 import twitter4j.{HashtagEntity, Status}
+import utils.MathHelper
 
 import scala.util.hashing.MurmurHash3
 
@@ -31,11 +32,7 @@ object RevisedCountHyperLogLog extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
-    var avg = 0
-    no_of_zeros.foreach(i => avg += (pow(2, i) - 1) / no_of_zeros.length)
-
-//    avg = no_of_zeros.sortWith(_ < _)(no_of_zeros.length/2)
-
-    println(avg)
+    val avg = MathHelper.harmonicMean(no_of_zeros.map(i => (pow(2, i) - 1)))
+    println(avg.toInt)
   }
 }
