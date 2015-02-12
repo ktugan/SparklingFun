@@ -7,7 +7,7 @@ import twitter4j.Status
 
 object BloomCounter extends BigDataAlgorithm {
   var counter = 0
-  var filter = new BloomFilterMonoid(9, 9001, 42)
+  var filter = new BloomFilterMonoid(9, 9001, scala.util.Random.nextInt())
   var current = filter.zero
 
   override def calculate(rdd: RDD[Status]): Unit = {

@@ -5,11 +5,13 @@ import com.twitter.algebird.CMSHasherImplicits._
 import org.apache.spark.rdd.RDD
 import twitter4j.Status
 
+import scala.util.Random
+
 object TopNCountMinSketch extends BigDataAlgorithm {
 
   val DELTA = 1E-3
   val EPS = 0.01
-  val SEED = 1
+  val SEED = Random.nextInt()
   val TOPK = 10
   val PERC = 0.01
 
