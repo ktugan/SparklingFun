@@ -8,7 +8,7 @@ import utils.MathHelper
 
 import scala.util.hashing.MurmurHash3
 
-class RevisedCountHyperLogLog extends BigDataAlgorithm {
+object RevisedCountHyperLogLog extends BigDataAlgorithm {
 
   val n = 5
   var no_of_zeros = Array.fill(n)(0)

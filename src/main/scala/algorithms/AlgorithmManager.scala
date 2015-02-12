@@ -43,16 +43,16 @@ object AlgorithmManager {
 
   def writeToCsv(): Unit={
     if(writeToCsvFile){
-      writer = new BufferedWriter(new FileWriter(new File("output.csv")))
-      writer.write(algorithms.map(_.name).mkString(";") + ";")
+      val file = new File("output.csv")
+      val fileExists = file.exists()
+      writer = new BufferedWriter(new FileWriter(file, true))
+      if(!fileExists)
+        writer.write(algorithms.map(_.name).mkString(";"))
       writer.newLine()
     }
 
-    algorithms.foreach(algo => {
-      writer.write(algo.getResults+ ";")
-    });
-    writer.newLine()
-    writer.flush()
+    writer.write(algorithms.map(_.getResults).mkString(";"))
+    writer.close()
   }
 
 

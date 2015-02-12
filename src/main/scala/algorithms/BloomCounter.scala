@@ -5,7 +5,7 @@ import org.apache.spark.rdd.RDD
 import twitter4j.Status
 
 
-class BloomCounter extends BigDataAlgorithm {
+object BloomCounter extends BigDataAlgorithm {
   var counter = 0
   var filter = new BloomFilterMonoid(9, 9001, scala.util.Random.nextInt())
   var current = filter.zero

@@ -4,7 +4,7 @@ import com.twitter.algebird.{HLL, HyperLogLogMonoid}
 import org.apache.spark.rdd.RDD
 import twitter4j.Status
 
-class AlgeHyperLogLog extends BigDataAlgorithm{
+object AlgeHyperLogLog extends BigDataAlgorithm{
   override def calculate(x: RDD[Status]): Unit = {
     x.flatMap(status => status.getHashtagEntities).map(h => h.getText).foreach(count)
   }

@@ -7,7 +7,7 @@ import twitter4j.{HashtagEntity, Status}
 
 import scala.util.hashing.MurmurHash3
 
-class CountHyperLogLog extends BigDataAlgorithm {
+object CountHyperLogLog extends BigDataAlgorithm {
 
   var no_of_zeros = 0
   val seed = 42//Random.nextInt()

@@ -7,7 +7,7 @@ import twitter4j.Status
 
 import scala.util.Random
 
-class TopNCountMinSketch extends BigDataAlgorithm {
+object TopNCountMinSketch extends BigDataAlgorithm {
 
   val DELTA = 1E-3
   val EPS = 0.01

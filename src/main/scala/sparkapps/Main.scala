@@ -7,21 +7,21 @@ object Main {
   def main(args: Array[String])= {
     val algorithms = Array(
     //pure counting
-      new SimpleCounter,
-      new MorrisCounter,
-      new RevisedMorrisCounter,
+      SimpleCounter,
+      MorrisCounter,
+      RevisedMorrisCounter,
 
     //distinct counting
-      new NaiveCountDistinct,
-      new CountHyperLogLog,
-      new RevisedCountHyperLogLog,
-      new AlgeHyperLogLog,
-      new BloomCounter,
+      NaiveCountDistinct,
+      CountHyperLogLog,
+      RevisedCountHyperLogLog,
+      AlgeHyperLogLog,
+      BloomCounter,
 
     //max n counting
-      new TopNCountMinSketch
+      TopNCountMinSketch
     )
 
-    TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
+    //TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
   }
 }
