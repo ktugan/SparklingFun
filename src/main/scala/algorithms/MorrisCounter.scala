@@ -30,6 +30,6 @@ object MorrisCounter extends BigDataAlgorithm {
 
   override def getResults: String = {
     val approx = pow(2, i) - 1
-    approx + " (" + i + ")"
+    approx.toString
   }
 }
