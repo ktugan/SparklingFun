@@ -6,7 +6,7 @@ import twitter4j.{HashtagEntity, Status}
 import scala.collection.mutable
 
 
-object NaiveCountDistinct extends BigDataAlgorithm {
+class NaiveCountDistinct extends BigDataAlgorithm {
   var set = new mutable.HashSet[String]()
 
   override def calculate(rdd: RDD[Status]): Unit = {

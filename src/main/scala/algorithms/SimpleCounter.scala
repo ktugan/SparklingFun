@@ -3,7 +3,7 @@ package algorithms
 import org.apache.spark.rdd.RDD
 import twitter4j.Status
 
-object SimpleCounter extends BigDataAlgorithm {
+class SimpleCounter extends BigDataAlgorithm {
   var i = 0
 
   override def calculate(rdd: RDD[Status]): Unit = {

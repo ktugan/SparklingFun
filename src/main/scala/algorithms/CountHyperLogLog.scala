@@ -5,10 +5,9 @@ import breeze.numerics.pow
 import org.apache.spark.rdd.RDD
 import twitter4j.{HashtagEntity, Status}
 
-import scala.util.Random
 import scala.util.hashing.MurmurHash3
 
-object CountHyperLogLog extends BigDataAlgorithm {
+class CountHyperLogLog extends BigDataAlgorithm {
 
   var no_of_zeros = 0
   val seed = 42//Random.nextInt()

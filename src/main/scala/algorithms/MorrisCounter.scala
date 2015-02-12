@@ -7,7 +7,7 @@ import twitter4j.Status
 
 import scala.util.Random
 
-object MorrisCounter extends BigDataAlgorithm {
+class MorrisCounter extends BigDataAlgorithm {
   var i = 0
 
   override def calculate(x: RDD[Status]): Unit = {

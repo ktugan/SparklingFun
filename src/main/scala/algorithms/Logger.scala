@@ -22,7 +22,7 @@ object Logger {
 
   def printAlgorithms(): Unit ={
     algorithms.foreach(algorithm => {
-      print(algorithm.getClass.getSimpleName.padTo(30, ' '))
+      print(algorithm.name.padTo(30, ' '))
       println(algorithm.getResults)
     })
     println("".padTo(60, '-'))

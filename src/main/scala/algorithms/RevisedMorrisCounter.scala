@@ -7,7 +7,7 @@ import utils.MathHelper
 
 import scala.util.Random
 
-object RevisedMorrisCounter extends BigDataAlgorithm {
+class RevisedMorrisCounter extends BigDataAlgorithm {
 
   val n = 5
   var counter = Array.fill(n)(0)
