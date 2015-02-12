@@ -22,6 +22,6 @@ object Main {
       TopNCountMinSketch
     )
 
-    //TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
+    TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
   }
 }
