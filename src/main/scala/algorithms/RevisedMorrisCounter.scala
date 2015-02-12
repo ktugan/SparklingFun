@@ -32,7 +32,9 @@ object RevisedMorrisCounter extends BigDataAlgorithm {
   }
 
   override def getResults: String = {
-    val avg = MathHelper.harmonicMean(counter.map(i => pow(2, i) - 1))
-    avg.toInt.toString
+    val data = counter.map(i => pow(2, i) - 1)
+    val harmon_avg = MathHelper.harmonicMean(data)
+    val ar_avg = MathHelper.arithmeticMean(data)
+    harmon_avg.toInt.toString + ";" + ar_avg.toInt.toString
   }
 }
