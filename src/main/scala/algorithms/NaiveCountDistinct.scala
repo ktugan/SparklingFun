@@ -17,7 +17,5 @@ object NaiveCountDistinct extends BigDataAlgorithm {
     set.add(hashTag.getText)
   }
 
-  override def print(): Unit = {
-    println(set.size)
-  }
+  override def getResults: String = set.size.toString
 }

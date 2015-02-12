@@ -14,7 +14,5 @@ object SimpleCounter extends BigDataAlgorithm {
     i += 1
   }
 
-  override def print(): Unit = {
-    println(i)
-  }
+  override def getResults: String = i.toString
 }

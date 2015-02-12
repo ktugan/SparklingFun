@@ -27,7 +27,7 @@ object CountHyperLogLog extends BigDataAlgorithm {
     no_of_zeros = max(no_of_zeros, i)
   }
 
-  override def print(): Unit = {
-    println(pow(2, no_of_zeros))
+  override def getResults: String = {
+    pow(2, no_of_zeros).toString
   }
 }

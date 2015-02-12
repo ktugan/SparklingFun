@@ -32,8 +32,8 @@ object RevisedCountHyperLogLog extends BigDataAlgorithm {
     }
   }
 
-  override def print(): Unit = {
-    val avg = MathHelper.harmonicMean(no_of_zeros.map(i => (pow(2, i) - 1)))
-    println(avg.toInt)
+  override def getResults: String = {
+    val avg = MathHelper.harmonicMean(no_of_zeros.map(i => pow(2, i) - 1))
+    avg.toInt.toString
   }
 }

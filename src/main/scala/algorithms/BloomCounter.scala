@@ -1,8 +1,8 @@
 package algorithms
 
-import com.twitter.algebird.{BloomFilterMonoid}
+import com.twitter.algebird.BloomFilterMonoid
 import org.apache.spark.rdd.RDD
-import twitter4j.{Status}
+import twitter4j.Status
 
 
 object BloomCounter extends BigDataAlgorithm {
@@ -22,7 +22,5 @@ object BloomCounter extends BigDataAlgorithm {
     }
   }
 
-  override def print(): Unit = {
-    println(counter)
-  }
+  override def getResults: String = counter.toString
 }

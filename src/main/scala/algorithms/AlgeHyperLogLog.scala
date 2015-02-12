@@ -17,7 +17,5 @@ object AlgeHyperLogLog extends BigDataAlgorithm{
     globalHll = hll.plus(globalHll, hash)
   }
 
-  override def print(): Unit = {
-    println(globalHll.approximateSize.estimate)
-  }
+  override def getResults: String = globalHll.approximateSize.estimate.toString
 }

@@ -27,10 +27,10 @@ object TopNCountMinSketch extends BigDataAlgorithm {
     top_cms = cms.plus(top_cms, top_cms_2)
   }
 
-  override def print(): Unit = {
+  override def getResults: String = {
     val counted = top_cms.totalCount
     val heavy = top_cms.heavyHitters.mkString("[", ",", "]")
 
-    println(heavy)
+    heavy.toString
   }
 }

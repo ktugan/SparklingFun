@@ -31,8 +31,8 @@ object RevisedMorrisCounter extends BigDataAlgorithm {
     }
   }
 
-  override def print(): Unit = {
-    val avg = MathHelper.harmonicMean(counter.map(i => (pow(2, i) - 1)))
-    println(avg.toInt)
+  override def getResults: String = {
+    val avg = MathHelper.harmonicMean(counter.map(i => pow(2, i) - 1))
+    avg.toInt.toString
   }
 }
