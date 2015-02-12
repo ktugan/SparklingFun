@@ -33,6 +33,6 @@ object RevisedMorrisCounter extends BigDataAlgorithm {
     var avg = 0
     counter.foreach(i => avg += (pow(2, i) - 1) / counter.length)
 
-    println("RevMorrisCounter:".padTo(20, ' ') + avg)
+    println(avg)
   }
 }

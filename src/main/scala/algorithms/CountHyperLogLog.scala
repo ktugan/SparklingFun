@@ -28,6 +28,6 @@ object CountHyperLogLog extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
-    println("DistinctHashtags (Hyperloglog):".padTo(20, ' ') + pow(2, no_of_zeros))
+    println(pow(2, no_of_zeros))
   }
 }

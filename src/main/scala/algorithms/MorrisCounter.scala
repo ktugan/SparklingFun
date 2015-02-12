@@ -30,6 +30,6 @@ object MorrisCounter extends BigDataAlgorithm {
 
   override def print(): Unit = {
     val approx = pow(2, i) - 1
-    println("MorrisCounter:".padTo(20, ' ') + approx + " (" + i + ")")
+    println(approx + " (" + i + ")")
   }
 }

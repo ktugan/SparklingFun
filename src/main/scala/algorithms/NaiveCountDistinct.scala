@@ -18,6 +18,6 @@ object NaiveCountDistinct extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
-    println("NaiveCountDistinct:".padTo(20, ' ') + set.size)
+    println(set.size)
   }
 }

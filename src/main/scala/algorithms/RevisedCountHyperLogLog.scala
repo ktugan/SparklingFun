@@ -36,6 +36,6 @@ object RevisedCountHyperLogLog extends BigDataAlgorithm {
 
 //    avg = no_of_zeros.sortWith(_ < _)(no_of_zeros.length/2)
 
-    println("RevisedCountHyperLogLog:".padTo(20, ' ') + avg)
+    println(avg)
   }
 }

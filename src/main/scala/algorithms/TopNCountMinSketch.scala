@@ -31,6 +31,6 @@ object TopNCountMinSketch extends BigDataAlgorithm {
     val counted = top_cms.totalCount
     val heavy = top_cms.heavyHitters.mkString("[", ",", "]")
 
-    println("CMS heavy hitters:".padTo(20, ' ') + heavy)
+    println(heavy)
   }
 }

@@ -15,6 +15,6 @@ object SimpleCounter extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
-    println("SimpleCounter:".padTo(20, ' ') + i)
+    println(i)
   }
 }
