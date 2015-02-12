@@ -9,7 +9,7 @@ import scala.util.Random
 
 object RevisedMorrisCounter extends BigDataAlgorithm {
 
-  val n = 5
+  val n = 23
   var counter = Array.fill(n)(0)
 
   override def calculate(x: RDD[Status]): Unit = {
@@ -32,7 +32,11 @@ object RevisedMorrisCounter extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
+
     val avg = MathHelper.harmonicMean(counter.map(i => (pow(2, i) - 1)))
-    println(avg.toInt)
+    val arithmetic_avg = MathHelper.arithmeticMean(counter.map(i => (pow(2, i) - 1)))
+
+    println(avg.toInt + " " + arithmetic_avg.toInt + " " + counter.mkString("[", ",", "]"))
+
   }
 }

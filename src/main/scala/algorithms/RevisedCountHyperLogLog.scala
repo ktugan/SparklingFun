@@ -10,7 +10,7 @@ import scala.util.hashing.MurmurHash3
 
 object RevisedCountHyperLogLog extends BigDataAlgorithm {
 
-  val n = 5
+  val n = 23
   var no_of_zeros = Array.fill(n)(0)
   val seeds = Array.fill(n)(scala.util.Random.nextInt())
 
@@ -33,7 +33,10 @@ object RevisedCountHyperLogLog extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
+
     val avg = MathHelper.harmonicMean(no_of_zeros.map(i => (pow(2, i) - 1)))
-    println(avg.toInt)
+    val arithmetic_avg = MathHelper.arithmeticMean(no_of_zeros.map(i => (pow(2, i) - 1)))
+
+    println(avg.toInt + " " + arithmetic_avg.toInt + " " + no_of_zeros.mkString("[", ",", "]"))
   }
 }

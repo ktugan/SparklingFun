@@ -6,4 +6,9 @@ object MathHelper {
     return seq.length / seq.map(i => 1.0 / i).sum
   }
 
+  def arithmeticMean(seq: Seq[Int]): Double ={
+    return seq.map(i => i/seq.length.toDouble).sum
+  }
+
+
 }
