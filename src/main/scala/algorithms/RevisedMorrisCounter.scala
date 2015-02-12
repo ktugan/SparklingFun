@@ -3,6 +3,7 @@ package algorithms
 import breeze.numerics._
 import org.apache.spark.rdd.RDD
 import twitter4j.Status
+import utils.MathHelper
 
 import scala.util.Random
 
@@ -30,9 +31,7 @@ object RevisedMorrisCounter extends BigDataAlgorithm {
   }
 
   override def print(): Unit = {
-    var avg = 0
-    counter.foreach(i => avg += (pow(2, i) - 1) / counter.length)
-
-    println(avg)
+    val avg = MathHelper.harmonicMean(counter.map(i => (pow(2, i) - 1)))
+    println(avg.toInt)
   }
 }
