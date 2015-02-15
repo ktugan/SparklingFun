@@ -24,7 +24,7 @@ object TwitterStreaming {
     System.setProperty("twitter4j.oauth.accessToken", accessToken)
     System.setProperty("twitter4j.oauth.accessTokenSecret", accessTokenSecret)
 
-    val sparkConf = new SparkConf().setAppName("TwitterPopularTags").setMaster("local[4]")
+    val sparkConf = new SparkConf().setAppName("Sparkling Fun").setMaster("local[2]")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     val stream = TwitterUtils.createStream(ssc, None)
 
