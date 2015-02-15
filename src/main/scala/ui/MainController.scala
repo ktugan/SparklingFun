@@ -1,43 +1,39 @@
 package ui
 
+import javafx.application.Platform
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml.FXML
+import javafx.scene.chart.XYChart.{Data, Series}
 import javafx.scene.chart.{LineChart, XYChart}
 import javafx.scene.control.Button
 
 import algorithms._
-import sparkapps.TwitterStreaming
+import utils.AlgorithmConsolePrinter
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 class MainController() {
   @FXML private val startStream: Button = null
-  @FXML private val lineChart: LineChart[Double, Double] = null
-
+  @FXML private val lineChart: LineChart[Long, Long] = null
+  val lineChartData: ObservableList[XYChart.Series[Long, Long]] = FXCollections.observableArrayList[XYChart.Series[Long, Long]]
+  val serieses = new java.util.HashMap[String, XYChart.Series[Long, Long]]()
 
 
   @FXML private def initialize() {
-    //button.textProperty.bindBidirectional(stringProperty)
-
-    val lineChartData: ObservableList[XYChart.Series[Double, Double]] = FXCollections.observableArrayList[XYChart.Series[Double, Double]]
-
-    val series1: XYChart.Series[Double, Double] = new XYChart.Series[Double, Double]
-    series1.setName("Series 1")
-    series1.getData.add(new XYChart.Data[Double, Double](0.0, 1.0))
-    series1.getData.add(new XYChart.Data[Double, Double](1.2, 1.4))
-    series1.getData.add(new XYChart.Data[Double, Double](2.2, 1.9))
-    series1.getData.add(new XYChart.Data[Double, Double](2.7, 2.3))
-    series1.getData.add(new XYChart.Data[Double, Double](2.9, 0.5))
-    lineChartData.add(series1)
-    val series2: XYChart.Series[Double, Double] = new XYChart.Series[Double, Double]
-    series2.setName("Series 2")
-    series2.getData.add(new XYChart.Data[Double, Double](0.0, 1.6))
-    series2.getData.add(new XYChart.Data[Double, Double](0.8, 0.4))
-    series2.getData.add(new XYChart.Data[Double, Double](1.4, 2.9))
-    series2.getData.add(new XYChart.Data[Double, Double](2.1, 1.3))
-    series2.getData.add(new XYChart.Data[Double, Double](2.6, 0.9))
-    lineChartData.add(series2)
+    initSpark()
     lineChart.setData(lineChartData)
+    //populate hashmap
+    AlgorithmManager.algorithms.foreach(algo => {
+      val series = new Series[Long, Long]()
+      series.setName(algo.name)
+      serieses.put(algo.name, series)
+      lineChartData.add(series)
+
+    })
     lineChart.createSymbolsProperty
   }
+
 
 
   def initSpark(): Unit ={
@@ -45,20 +41,31 @@ class MainController() {
       //pure counting
       SimpleCounter,
       MorrisCounter,
-      RevisedMorrisCounter,
-
-      //distinct counting
-      NaiveCountDistinct,
-      CountHyperLogLog,
-      RevisedCountHyperLogLog,
-      AlgeHyperLogLog,
-      BloomCounter,
-
-      //max n counting
-      TopNCountMinSketch
+      RevisedMorrisCounter
     )
 
-    TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
+    //add callbacks
+    AlgorithmManager.callbacks += FillChart
+    AlgorithmManager.callbacks += AlgorithmConsolePrinter
+
+    Future {
+      AlgorithmManager.initializeStreaming()
+    }
+  }
+
+  object FillChart extends AlgorithmsResultEvent {
+    override def callback(results: Seq[AlgorithmResult]): Unit = {
+      results.foreach(algorithm => {
+        val series = serieses.get(algorithm.name)
+        val data = new Data[Long, Long](algorithm.sequenceId, algorithm.value.toLong)
+        //run in javafx thread
+        Platform.runLater(new Runnable {
+          override def run(): Unit = series.getData.add(data)
+        })
+
+      })
+
+    }
   }
 
 

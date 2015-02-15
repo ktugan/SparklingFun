@@ -11,10 +11,10 @@
 
         <LineChart fx:id="lineChart">
             <xAxis>
-                <NumberAxis label="Time" lowerBound="0" tickUnit="1"></NumberAxis>
+                <NumberAxis label="Time" lowerBound="1" tickUnit="1"></NumberAxis>
             </xAxis>
             <yAxis>
-                <NumberAxis label="Values" lowerBound="0" tickUnit="1"></NumberAxis>
+                <NumberAxis label="Values" lowerBound="1" tickUnit="1"></NumberAxis>
             </yAxis>
         </LineChart>
     </children>

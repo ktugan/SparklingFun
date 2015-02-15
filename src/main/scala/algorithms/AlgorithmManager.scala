@@ -29,10 +29,17 @@ object AlgorithmManager {
   val callbacks = collection.mutable.MutableList[AlgorithmsResultEvent]()
   var counter = 0
   def startCallbacks(): Unit = {
-    val results = algorithms.map(algorithm => {
-      new AlgorithmResult(counter, algorithm.name, algorithm.getResults)
-    })
-    callbacks.foreach(_.call(results))
+    try {
+      counter += 1
+      val results = algorithms.map(algorithm => {
+        new AlgorithmResult(counter, algorithm.name, algorithm.getResults)
+      })
+      callbacks.foreach(_.call(results))
+    }
+    catch {
+      case e => e.printStackTrace()
+    }
+
   }
 
 
