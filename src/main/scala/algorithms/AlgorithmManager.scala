@@ -2,6 +2,8 @@ package algorithms
 
 import sparkapps.TwitterStreaming
 
+import scala.collection.mutable.ListBuffer
+
 object AlgorithmManager {
 
   /**
@@ -20,10 +22,19 @@ object AlgorithmManager {
   /**
    * For registering every algorithm
    */
-  var algorithms: List[BigDataAlgorithm] = List()
+  var algorithms: ListBuffer[BigDataAlgorithm] = ListBuffer()
 
-  def register(algorithm: BigDataAlgorithm): Unit = {
-    algorithms = algorithms ::: List(algorithm)
+  def add(algorithm: BigDataAlgorithm): Unit = {
+    algorithms = algorithms += algorithm
+  }
+
+  def remove(algorithm: BigDataAlgorithm): Unit = {
+    algorithms = algorithms -= algorithm
+  }
+
+
+    def shutdown(): Unit ={
+    ex.shutdown()
   }
 
   val callbacks = collection.mutable.MutableList[AlgorithmsResultEvent]()
@@ -43,7 +54,7 @@ object AlgorithmManager {
   }
 
 
-  def initializeStreaming(): Unit = {
+  def initializeStreaming(algorithms : Seq[BigDataAlgorithm]): Unit = {
     TwitterStreaming.startTwitterStreamAlgorithm(algorithms)
   }
 

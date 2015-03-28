@@ -9,23 +9,27 @@ object ConsoleMain {
 
     //Just by using the name, initialize the singletons
     //pure counting
-    SimpleCounter
-    MorrisCounter
-    RevisedMorrisCounter
+    val algorithms = Array(
+      SimpleCounter,
+      MorrisCounter,
+      RevisedMorrisCounter,
 
-    //distinct counting
-    NaiveCountDistinct
-    CountHyperLogLog
-    RevisedCountHyperLogLog
-    AlgeHyperLogLog
-    BloomCounter
+      //distinct counting
+      NaiveCountDistinct,
+      CountHyperLogLog,
+      RevisedCountHyperLogLog,
+      AlgeHyperLogLog,
+      BloomCounter,
 
-    //max n counting
-    TopNCountMinSketch
+      //max n counting
+      TopNCountMinSketch
+      )
+    algorithms.foreach(algo => AlgorithmManager.add(algo))
+
 
     //start the streaming
     AlgorithmManager.callbacks += AlgorithmConsolePrinter
-    AlgorithmManager.initializeStreaming()
+    AlgorithmManager.initializeStreaming(algorithms)
 
   }
 }
