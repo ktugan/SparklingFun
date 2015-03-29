@@ -1,9 +1,11 @@
 # Sparkling Fun
 
 
+
 This projects implements big data algorithms with a hands on approach and applying these algorithms to the twitter stream. 
 The template for this project is based upon ludwsam's repo: (https://github.com/Ludwsam/SparkTemplate/)
 
+![](https://raw.githubusercontent.com/wiki/ktugan/SparklingFun/screenshot-running.png)
 
 ## Requisites
 - Intellij
