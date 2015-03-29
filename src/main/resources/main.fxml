@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.chart.*?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ui.MainController">
+    <stylesheets>
+        <URL value="@main.css"/>
+    </stylesheets>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
-    <children>
-        <GridPane>
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60" />
-                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="20" />
+    <GridPane fx:id="controlsPane">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="20"/>
 
-            </columnConstraints>
-            <children>
-                <Label text="Algorithms" style="-fx-padding: 8; -fx-font-size: 1.5em" GridPane.columnIndex="0"/>
-                <FlowPane fx:id="algorithmsFlowPane" prefHeight="85.0" prefWidth="401.0" GridPane.columnIndex="1">
-                </FlowPane>
+        </columnConstraints>
+        <Label text="Algorithms" style="-fx-padding: 8; -fx-font-size: 1.5em" GridPane.columnIndex="0"/>
+        <FlowPane fx:id="algorithmsFlowPane" prefHeight="85.0" prefWidth="401.0" GridPane.columnIndex="1">
+        </FlowPane>
 
-                <Button text="Start" style="-fx-background-color: limegreen; -fx-background-insets: 5;" GridPane.columnIndex="2" maxHeight="Infinity" maxWidth="Infinity" onAction="#startSpark"/>
-            </children>
-        </GridPane>
+        <Button fx:id="startButton"
+                text="Start"
+                styleClass="start-button"
+                GridPane.columnIndex="2"
+                maxHeight="Infinity"
+                maxWidth="Infinity"
+                onAction="#startSpark"/>
+    </GridPane>
 
-        <LineChart fx:id="lineChart">
-            <xAxis>
-                <NumberAxis label="Time" lowerBound="1" tickUnit="1" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis label="Values" lowerBound="1" tickUnit="1" />
-            </yAxis>
-        </LineChart>
-    </children>
+    <LineChart fx:id="lineChart">
+        <xAxis>
+            <NumberAxis label="Time" lowerBound="1" tickUnit="1"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Values" lowerBound="1" tickUnit="1"/>
+        </yAxis>
+    </LineChart>
 </VBox>

@@ -7,8 +7,8 @@ import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml.FXML
 import javafx.scene.chart.XYChart.{Data, Series}
 import javafx.scene.chart.{LineChart, XYChart}
-import javafx.scene.control.CheckBox
-import javafx.scene.layout.FlowPane
+import javafx.scene.control.{Button, CheckBox}
+import javafx.scene.layout.{GridPane, FlowPane}
 
 import algorithms._
 import sparkapps.Algorithms
@@ -16,7 +16,9 @@ import utils.AlgorithmConsolePrinter
 
 class MainController() {
   @FXML val lineChart: LineChart[Long, Long] = null
-  @FXML val algorithmsFlowPane: FlowPane = null;
+  @FXML val algorithmsFlowPane: FlowPane = null
+  @FXML val controlsPane: GridPane = null
+  @FXML val startButton:Button = null
 
   val lineChartData: ObservableList[XYChart.Series[Long, Long]] = FXCollections.observableArrayList[XYChart.Series[Long, Long]]
   val serieses = new java.util.HashMap[String, XYChart.Series[Long, Long]]()
@@ -50,6 +52,9 @@ class MainController() {
    * Starts the Spark Streaming Service
    */
   def startSpark(): Unit = {
+    controlsPane.setDisable(true)
+    startButton.setText("Running")
+
     //populate hashmap and initialize algorithms
     AlgorithmManager.algorithms.foreach(algo => {
       val series = new Series[Long, Long]()
