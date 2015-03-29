@@ -1,8 +1,8 @@
 # Sparkling Fun
 
+Sparkling Fun is a kind of micro-framework to test different types of algorithms on the twitter stream. Its the result of the course *Modern Algorithms for Big Data* at the Freie Universität of Berlin. It allows the easy implementation of algorithms to encapsulate the use of the twitter stream, without needing to know spark-functionality or inner workings.
 
-
-This projects implements big data algorithms with a hands on approach and applying these algorithms to the twitter stream. You can easily add your own algorithms and compare them.
+The visualization happens either over JavaFX and their chart functionality, the console or any provider you chose to implement.
 The template for this project is based upon ludwsam's repo: (https://github.com/Ludwsam/SparkTemplate/)
 
 ![](https://raw.githubusercontent.com/wiki/ktugan/SparklingFun/screenshot-running.png)
