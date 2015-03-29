@@ -70,4 +70,4 @@ object Algorithms {
 ```
 
 ### Step 3:
-Lean back and enjoy
+Start the application, choose your algorithms and lean back, enjoy
