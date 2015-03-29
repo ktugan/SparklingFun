@@ -8,7 +8,7 @@ import javafx.fxml.FXML
 import javafx.scene.chart.XYChart.{Data, Series}
 import javafx.scene.chart.{LineChart, XYChart}
 import javafx.scene.control.{Button, CheckBox}
-import javafx.scene.layout.{GridPane, FlowPane}
+import javafx.scene.layout.VBox
 
 import algorithms._
 import sparkapps.Algorithms
@@ -16,8 +16,8 @@ import utils.AlgorithmConsolePrinter
 
 class MainController() {
   @FXML val lineChart: LineChart[Long, Long] = null
-  @FXML val algorithmsFlowPane: FlowPane = null
-  @FXML val controlsPane: GridPane = null
+  @FXML val algorithmsPane: VBox = null
+  @FXML val controlsPane: VBox = null
   @FXML val startButton:Button = null
 
   val lineChartData: ObservableList[XYChart.Series[Long, Long]] = FXCollections.observableArrayList[XYChart.Series[Long, Long]]
@@ -36,6 +36,7 @@ class MainController() {
     //adds checkboxes and handles their selected event
     algorithms.foreach(algorithm => {
       val checkbox = new CheckBox(algorithm.name)
+      checkbox.setStyle("-fx-padding: 2;")
       checkbox.selectedProperty().addListener(new ChangeListener[Boolean] {
         override def changed(observableValue: ObservableValue[_ <: Boolean], t: Boolean, newvalue: Boolean): Unit = {
           if (newvalue)
@@ -44,7 +45,7 @@ class MainController() {
             AlgorithmManager.remove(algorithm)
         }
       })
-      algorithmsFlowPane.getChildren.add(checkbox)
+      algorithmsPane.getChildren.add(checkbox)
     })
   }
 
