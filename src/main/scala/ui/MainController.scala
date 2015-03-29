@@ -11,6 +11,7 @@ import javafx.scene.control.CheckBox
 import javafx.scene.layout.FlowPane
 
 import algorithms._
+import sparkapps.Algorithms
 import utils.AlgorithmConsolePrinter
 
 import scala.concurrent.Future
