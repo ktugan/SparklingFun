@@ -14,8 +14,6 @@ import algorithms._
 import sparkapps.Algorithms
 import utils.AlgorithmConsolePrinter
 
-import scala.concurrent.Future
-
 class MainController() {
   @FXML val lineChart: LineChart[Long, Long] = null
   @FXML val algorithmsFlowPane: FlowPane = null;
@@ -64,10 +62,12 @@ class MainController() {
 
     AlgorithmManager.callbacks += FillChart
     AlgorithmManager.callbacks += AlgorithmConsolePrinter
-    import scala.concurrent.ExecutionContext.Implicits.global
-    Future {
-      AlgorithmManager.initializeStreaming(AlgorithmManager.algorithms)
-    }
+
+    val thread = new Thread(new Runnable {
+      override def run(): Unit = AlgorithmManager.initializeStreaming(AlgorithmManager.algorithms)
+    })
+    thread.setDaemon(true)
+    thread.start()
   }
 
   object FillChart extends AlgorithmsResultEvent {

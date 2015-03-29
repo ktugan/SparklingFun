@@ -33,7 +33,7 @@ object AlgorithmManager {
   }
 
 
-    def shutdown(): Unit ={
+  def shutdown(): Unit ={
     ex.shutdown()
   }
 
